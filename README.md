@@ -24,6 +24,10 @@ estimates that connect scores to partner ranks. Below we state the model,
 the original conjecture, the stronger theorem, and the other results in the
 package.
 
+An accompanying working paper presenting these results and their economic
+interpretation is in preparation. A link will be added here when it is publicly
+available.
+
 ## Model and ranks
 
 For each integer $`n\ge2`$, there are $`n`$ firms and $`n`$ workers. All $`2n^2`$ utilities
