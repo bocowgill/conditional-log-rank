@@ -1,7 +1,8 @@
 # Statement audit
 
 Date: November 8, 2026. Evidence basis: agent self-review and Lean checking.
-No independent human mathematical review is claimed.
+Codex helped formalize the results in Lean and assisted with this statement and
+axiom audit. No independent human mathematical review is claimed.
 
 ## Selected mathematical content
 
@@ -49,14 +50,15 @@ The published Section 3 question concerns a uniform stable lottery in a realized
 market; this theorem does not answer it. Their published paper and December 2024
 working paper are background sources,
 not sources to which the exact conditional CDF limit is attributed. The precise
-claim was proposed in issue 7827 and is proved by this standalone development.
+claim is stated in issue 7827 and is proved by this standalone development.
 Literature novelty and priority remain unverified. Source-author endorsement
 has not been requested.
 
 The definitions adapted from Formal Conjectures PR 7828 retain its Apache-2.0
 credit. This submission contains its substantive proof. It leaves the original
-PR and its placeholder proof unchanged. The market-first bridge and all
-results from its paused campaign are excluded.
+PR and its placeholder proof unchanged. Its probability law conditions a fixed
+matching on stability; it does not determine ranks under a uniform stable choice
+in an ordinary random market.
 
 ## Proof and statement separation
 

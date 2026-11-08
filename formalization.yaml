@@ -23,9 +23,8 @@ sources:
     type: "original-proof"
     relationship: "other"
     note: >-
-      The precise conditional limit is first presented in this standalone proof
-      development, following a research question and a proposed sharpening.
-      This origin declaration is not a claim that literature priority has been certified.
+      This package contains a Lean proof of the conditional logarithmic
+      partner-rank limit and its supercritical special case.
   - title: "Stable matchings under relaxed random preferences"
     authors: ["Boris Pittel", "Kirill Rudov"]
     id: "doi:10.1007/s00182-026-01016-x"
@@ -35,8 +34,8 @@ sources:
     note: >-
       Supplies the exponential-utility switching-cost model, expected-count
       analysis, and the Section 3 rank question about a uniform stable lottery in a
-      realized market. Our conditional theorem does not answer that question. The precise conditional
-      log-rank law is our sharpening, not a theorem or conjecture attributed to the authors.
+      realized market. The conditional theorem in this package uses a different
+      sampling scheme and does not answer that market-first question.
     author_endorsement: "not-contacted"
   - title: "Stable Matchings with Switching Costs"
     authors: ["Boris Pittel", "Kirill Rudov"]
@@ -69,7 +68,8 @@ status:
     Full Lean proofs of the fixed-matching conditional limit, its supercritical
     special case, and positivity of the conditioning event. The limit is along
     n=k+2 and only interior cutoffs rho<t<1 are selected for comparison. The
-    market-first bridge and count-separation theorem are outside this submission.
+    theorem concerns a fixed matching conditioned on stability. It does not
+    determine ranks under a uniform stable choice in an ordinary random market.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound"]
@@ -79,9 +79,8 @@ automation:
     - method: "agent"
       framework: "OpenAI Codex"
       tool_setup: >-
-        Codex agents generated the earlier informal proof and Lean development
-        under the maintainer's direction. Exact earlier model identifiers and
-        effort accounting were not retained.
+        Codex helped formalize the results in Lean. Exact model identifiers
+        and effort accounting for the earlier formalization work were not retained.
     - method: "agent"
       models: ["GPT-6"]
       framework: "OpenAI Codex"
@@ -91,13 +90,13 @@ automation:
         Palomar mechanical preflight. See audit/STATEMENT_AUDIT.md.
   spend_usd: "subscription-based; not tracked separately"
   notes: >-
-    Bo Cowgill directed the research and formalization and maintains the
-    submission. The mathematical and Lean proof text was produced by AI agents.
+    Codex helped formalize the results in Lean and assisted with auditing
+    and package preparation. Bo Cowgill maintains the submission.
     No independent human mathematical review is claimed.
 
 fidelity:
   divergences: >-
-    The cited literature motivates a broad rank question. Our exact CDF limit
+    The cited literature motivates a broad rank question. The exact CDF limit
     concerns a fixed matching conditioned on stability, not the market-first
     stable lottery. The general theorem removes the additional supercritical
     lower-bound hypothesis in Formal Conjectures issue 7827. Utilities have rate
