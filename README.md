@@ -15,7 +15,7 @@ $$
 Let $S_n$ be this stability event, and let
 
 $$
-R_n=\sum_{i,j=1}^n\mathbf 1\{U_{ij}\ge U_{ii}\}.
+R_n=\sum_{i,j=1}^n\mathbf{1}_{U_{ij}\ge U_{ii}}.
 $$
 
 The assigned partner contributes one to each firm's rank. Utilities have no ties
