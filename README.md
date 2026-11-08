@@ -1,15 +1,27 @@
 # Conditional logarithmic partner ranks
 
-This repository gives a Lean proof of a proposed log-rank law for random matching
-markets with switching costs. It proves the conjecture stated in
-[Formal Conjectures issue #7827](https://github.com/google-deepmind/formal-conjectures/issues/7827)
-and a stronger version that removes one of its assumptions. The package also
-proves exact probability identities, score limits, and estimates that connect
-scores to partner ranks.
+Switching costs broaden the set of assignments that satisfy pairwise stability:
+a firm–worker pair blocks an assignment only if both agents gain more than the
+cost. In balanced random markets with exponential utilities, this package gives
+a conditional benchmark for firms' partner ranks.
 
-The result describes a **fixed matching conditioned on being stable**. This
-conditioning matters: it changes the distribution of markets. Below we state the
-model, the original conjecture, the stronger theorem, and the other results in the
+The result describes a **fixed matching conditioned on being stable**. It does
+not describe drawing an ordinary random market and then choosing uniformly from
+its stable matchings.
+
+Under this conditioning, for any bounded or vanishing sequence of nonnegative
+costs, the logarithm of firms' average partner rank, divided by $`\log n`$ for
+market size $`n`$, converges in distribution to the uniform law on $`[0,1]`$.
+The conditional law therefore remains dispersed across polynomially different
+rank scales. More generally, if $`2\varepsilon_n/\log n\to\rho\in[0,1)`$, the
+limiting interval is $`[\rho,1]`$.
+
+This repository gives a Lean proof of the conjecture stated in
+[Formal Conjectures issue #7827](https://github.com/google-deepmind/formal-conjectures/issues/7827)
+and a stronger version that removes its supercritical lower-bound assumption.
+The package also proves exact probability identities, score limits, and
+estimates that connect scores to partner ranks. Below we state the model,
+the original conjecture, the stronger theorem, and the other results in the
 package.
 
 ## Model and ranks

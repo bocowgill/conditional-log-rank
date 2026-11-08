@@ -3,13 +3,23 @@ version: "v0.4"
 project:
   name: "Conditional logarithmic partner ranks in exponential matching markets"
   description: >-
-    In balanced markets with independent rate-one exponential utilities, condition
-    on stability of a fixed matching when both agents must gain more than a common
-    switching cost. If twice the cost divided by log n tends to rho in [0,1),
-    the conditional probability that average firm rank is at most n^t tends to
-    (t-rho)/(1-rho) for every rho<t<1. The proof includes positive conditioning
-    probability and the supercritical-cost special case. It does not determine
-    ranks under a uniform stable lottery in an ordinary random market.
+    Switching costs relax pairwise stability by requiring both members of a
+    blocking pair to gain more than a common nonnegative cost. In balanced
+    markets with n firms and n workers and independent rate-one exponential
+    utilities, this package proves a conditional benchmark for ordinal partner
+    ranks in Lean. Fix a matching and condition the market on its stability.
+    If twice the cost divided by log n tends to rho in [0,1), the conditional
+    probability that average one-based firm partner rank is at most n^t tends
+    to (t-rho)/(1-rho) for every rho<t<1; rank 1 is best. Equivalently, the
+    logarithm of average firm rank divided by log n converges in distribution
+    to the uniform law on [rho,1]. Bounded or vanishing costs give rho=0,
+    with persistent dispersion across polynomial rank scales under this
+    conditioning. The theorem removes the original conjecture's supercritical
+    lower bound. The proof also includes positive conditioning probability,
+    exact integral identities, score limits, and rank-transfer estimates.
+    This fixed-matching conditioning does not determine ranks under a uniform
+    stable lottery in an ordinary random market, or dispersion of stable
+    outcomes within a typical realized market.
   authors: ["Bo Cowgill"]
   license: "Apache-2.0"
   responsible_maintainers: ["Bo Cowgill"]
