@@ -53,10 +53,10 @@ W_n(s,u)=
 H_n(s)=\mathbb E_\Delta W_n(s,u),
 \qquad D_n=\frac{q^{-n}}{(n-1)!}.
 ```
-The Jacobian and the factor $`(qs)^{-n}`$ give the exact density formula
+The Jacobian and the factor $`(qs)^{-n}`$ give the exact density formula **(1)**:
 ```math
 \Pr(X\in ds,\ S_n)=D_n H_n(s)\,\frac{ds}{s},
-\qquad 0\lt s\le n. \tag{1}
+\qquad 0\lt s\le n.
 ```
 
 ### A uniform bound
@@ -70,9 +70,9 @@ If $`s\ge 2`$, then every $`u_j\le1/s\le1/2`$. We obtain $`J_j\le(1-u_j)^{-1}`$ 
 \prod_j(1-u_j)^{-1}
 =\exp\!\bigg(\sum_j-\log(1-u_j)\bigg)\le e^2,
 ```
-using $`-\log(1-u_j)=\int_0^{u_j}(1-v)^{-1}\,dv\le2u_j`$. If $`0\lt s\lt 2`$, the displayed integral for $`J_j`$ is at most $`e^{qsu_j}\int_0^{qs}e^{-z}\,dz\le e^{qsu_j}`$. Multiplying gives $`\prod_j J_j\le e^{qs}\le e^2`$. With the zero value on the inadmissible part, this proves
+using $`-\log(1-u_j)=\int_0^{u_j}(1-v)^{-1}\,dv\le2u_j`$. If $`0\lt s\lt 2`$, the displayed integral for $`J_j`$ is at most $`e^{qsu_j}\int_0^{qs}e^{-z}\,dz\le e^{qsu_j}`$. Multiplying gives $`\prod_j J_j\le e^{qs}\le e^2`$. With the zero value on the inadmissible part, this proves **(2)**:
 ```math
-0\le W_n(s,u)\le \min\{e^2,(qs)^n\}. \tag{2}
+0\le W_n(s,u)\le \min\{e^2,(qs)^n\}.
 ```
 In particular, the region $`s\le 1/q`$ contributes at most $`D_n/n`$ in (1), by integrating $`(qs)^n\,ds/s`$ up to $`1/q`$.
 
@@ -82,9 +82,9 @@ Write $`\rho_n=-\log q/\log n`$, so $`\rho_n\to\rho`$. Fix $`\delta\gt 0`$ with 
 ```math
 I_n=\big[n^\delta/q,\ n^{1-\delta}\big]
 ```
-is nonempty. We prove
+is nonempty. We prove **(3)**:
 ```math
-\sup_{s\in I_n}|H_n(s)-e^{-1}|\longrightarrow 0. \tag{3}
+\sup_{s\in I_n}|H_n(s)-e^{-1}|\longrightarrow 0.
 ```
 
 Under the uniform simplex law, let $`M=\max_i u_i`$ and $`Q=\sum_i u_i^2`$. The exponential representation and the weak law of large numbers give $`nQ\to2`$ in probability, since
@@ -126,18 +126,18 @@ The logarithmic length of $`I_n`$ is $`(1-\rho_n-2\delta)\log n`$. The two piece
 \le(e^{-1}+o(1))(1-\rho_n-2\delta)
    +2e^2\delta+\frac1{n\log n}.
 ```
-The $`o(1)`$ terms tend to zero for fixed $`\delta`$. Taking limits and then letting $`\delta\downarrow0`$ yields
+The $`o(1)`$ terms tend to zero for fixed $`\delta`$. Taking limits and then letting $`\delta\downarrow0`$ yields **(4)**:
 ```math
-\frac{Z_n}{D_n\log n}\longrightarrow e^{-1}(1-\rho). \tag{4}
+\frac{Z_n}{D_n\log n}\longrightarrow e^{-1}(1-\rho).
 ```
 For fixed $`\rho\lt t\lt 1`$, choose $`\delta`$ also less than $`\min(t-\rho,1-t)`$, so $`n^t\in I_n`$ eventually. The logarithmic length from $`n^\delta/q`$ to $`n^t`$ is $`(t-\rho_n-\delta)\log n`$. The contribution below $`n^\delta/q`$ is at most $`D_n(1/n+e^2\delta\log n)`$. Thus the same squeeze gives
 ```math
 \frac{\Pr(X\le n^t,\ S_n)}{D_n\log n}\longrightarrow e^{-1}(t-\rho).
 ```
-Dividing by (4) shows
+Dividing by (4) shows **(5)**:
 ```math
 \Pr\!\left(\frac{\log X}{\log n}\le t\ \middle|\ S_n\right)
-\longrightarrow \frac{t-\rho}{1-\rho}. \tag{5}
+\longrightarrow \frac{t-\rho}{1-\rho}.
 ```
 For $`t\le\rho`$, bounding the conditional probability by its value at any $`t'\in(\rho,1)`$ and sending $`t'\downarrow\rho`$ gives zero. For $`t\ge1`$, it is one since $`X\le n`$. These statements give convergence in distribution to the uniform law on $`[\rho,1]`$. The same law holds for $`\log Y/\log n`$ because $`K_q(x,y)=K_q(y,x)`$ after exchanging the two indices in the product.
 
@@ -156,7 +156,7 @@ x_i(1-qy_j)\le p_{ij}\le x_i
 follow from $`1-qx_i y_j\le1`$ and $`1-qy_j\le1-qx_i y_j`$, respectively. The diagonal contributes $`n`$ to $`R_n`$ and the remaining terms are independent Bernoulli indicators given $`x,y,S_n`$. Hence their total conditional mean $`\lambda=\sum_{i\ne j}p_{ij}`$ and the conditional variance of $`R_n`$ satisfy
 ```math
 (n-1)X-qXY\le\lambda\le(n-1)X,\qquad
-\operatorname{Var}(R_n\mid x,y,S_n)\le\lambda\le nX.
+\mathrm{Var}(R_n\mid x,y,S_n)\le\lambda\le nX.
 ```
 In particular,
 ```math
