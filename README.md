@@ -4,41 +4,41 @@ A standalone Lean proof for a balanced random matching market with switching cos
 This repository is separate from Formal Conjectures and from the paused market-first
 research campaign.
 
-For each n >= 2, let all firm utilities U_ij and worker utilities V_ij be independent
-rate-one exponentials. Worker j's utility for firm i is V_ij. The fixed diagonal
-matching pairs i with i. It is stable at cost epsilon_n when no i != j satisfies both
+For each $n \ge 2$, let all firm utilities $U_{ij}$ and worker utilities $V_{ij}$ be independent
+rate-one exponentials. Worker $j$'s utility for firm $i$ is $V_{ij}$. The fixed diagonal
+matching pairs $i$ with $i$. It is stable at cost $\varepsilon_n$ when no $i \ne j$ satisfies both
 
-\[
+$$
 U_{ij}>U_{ii}+\varepsilon_n,\qquad V_{ij}>V_{jj}+\varepsilon_n.
-\]
+$$
 
-Let S_n be this stability event, and let
+Let $S_n$ be this stability event, and let
 
-\[
+$$
 R_n=\sum_{i,j=1}^n\mathbf 1\{U_{ij}\ge U_{ii}\}.
-\]
+$$
 
 The assigned partner contributes one to each firm's rank. Utilities have no ties
-almost surely. Thus R_n/n is the average one-based firm partner rank.
+almost surely. Thus $R_n/n$ is the average one-based firm partner rank.
 
-If epsilon_n >= 0 and
+If $\varepsilon_n \ge 0$ and
 
-\[
+$$
 \frac{2\varepsilon_n}{\log n}\longrightarrow\rho\in[0,1),
-\]
+$$
 
-then, for every rho < t < 1,
+then, for every $\rho < t < 1$,
 
-\[
+$$
 \Pr(R_n\le n^{1+t}\mid S_n)\longrightarrow\frac{t-\rho}{1-\rho}.
-\]
+$$
 
-`ConditionalLogRank.logRankLaw` proves this limit along n=k+2. The cost values at
-n=0 and n=1 are immaterial. There is no monotonicity assumption. The selected limit
+`ConditionalLogRank.logRankLaw` proves this limit along $n=k+2$. The cost values at
+$n=0$ and $n=1$ are immaterial. There is no monotonicity assumption. The selected limit
 statements do not assert endpoint cutoffs or rates of convergence.
 
 `ConditionalLogRank.supercriticalLogRankLaw` is the same result with the additional
-hypothesis n epsilon_n/log n -> infinity. That hypothesis is unnecessary for the
+hypothesis $n\varepsilon_n/\log n \to +\infty$. That hypothesis is unnecessary for the
 more general theorem. `ConditionalLogRank.stability_probability_pos` proves that
 the conditioning event has strictly positive probability at every finite size and
 nonnegative cost, including sizes zero and one.
