@@ -25,8 +25,8 @@ agents gain strictly more than $`\varepsilon_n`$. Thus the stability event $`S_n
 that no $`i\ne j`$ satisfies both inequalities
 
 ```math
-U_{ij}>U_{ii}+\varepsilon_n,\qquad
-V_{ij}>V_{jj}+\varepsilon_n.
+U_{ij}\gt U_{ii}+\varepsilon_n,\qquad
+V_{ij}\gt V_{jj}+\varepsilon_n.
 ```
 
 A firm's partner rank is one plus the number of workers it prefers to its assigned
@@ -52,7 +52,7 @@ assume
 \frac{2\varepsilon_n}{\log n}\longrightarrow\rho.
 ```
 
-Then, for each real $`t`$ with $`\rho<t<1`$,
+Then, for each real $`t`$ with $`\rho\lt t\lt 1`$,
 
 ```math
 \Pr\!\left(R_n/n\le n^t\mid S_n\right)
@@ -77,7 +77,7 @@ vanishing costs of any rate, all with $`\rho=0`$.
 
 For example, when $`\rho=0`$, the conditional probability that firms' average
 partner rank is at most $`n^{1/4}`$ tends to $`1/4`$. More generally, a cutoff $`n^t`$
-with $`0<t<1`$ has limiting probability $`t`$.
+with $`0\lt t\lt 1`$ has limiting probability $`t`$.
 
 The main declarations are
 [`ConditionalLogRank.logRankLaw`](Solution.lean) and
@@ -85,7 +85,7 @@ The main declarations are
 both assumptions of the original conjecture. Lean indexes market sizes by
 $`n=k+2`$, so it covers every $`n\ge2`$ without the exceptional values of $`\log n`$ at
 sizes zero and one. The statements quantify over every interior cutoff
-$`\rho<t<1`$. No monotonicity assumption or rate of convergence is imposed. The
+$`\rho\lt t\lt 1`$. No monotonicity assumption or rate of convergence is imposed. The
 usual distributional formulation follows from these interior CDF limits; it is
 not a separate exported weak-convergence declaration.
 
@@ -122,7 +122,7 @@ utilities averaged across agents.
 ### Finite-market identities and positivity
 
 For every finite size $`n`$, including zero and one, and every nonnegative cost,
-$`\Pr(S_n)>0`$. Thus conditioning is well-defined. This is
+$`\Pr(S_n)\gt 0`$. Thus conditioning is well-defined. This is
 [`ConditionalLogRank.stability_probability_pos`](Solution.lean); the library also
 proves measurability of stability and rank events and that the conditional measure
 is a probability measure. See [MarketBasics.lean](SupercriticalLogRank/MarketBasics.lean).
@@ -146,7 +146,7 @@ sums have exactly the same conditional distribution at every finite size. See
 ### Exact radial identity and normalization
 
 For $`n\ge1`$, let $`u`$ be uniform on the simplex $`u_i\ge0`$, $`\sum_i u_i=1`$. For
-$`s>0`$, define
+$`s\gt 0`$, define
 
 ```math
 J_j(s,u)=\int_0^{qs}\prod_{i\ne j}(1-u_i z)\,dz,\qquad
@@ -167,13 +167,13 @@ uniform bound
 
 ```math
 0\le H_{n,q}(s)\le\min\!\left(e^2,(qs)^n\right)
-\qquad(0<q\le1,\ s>0),
+\qquad(0\lt q\le1,\ s\gt 0),
 ```
 
 and convergence $`H_{n,q_n}(s)\to e^{-1}`$ uniformly on every interior window
-$`n^\delta/q_n\le s\le n^{1-\delta}`$, for fixed $`\delta>0`$. Under the logarithmic
+$`n^\delta/q_n\le s\le n^{1-\delta}`$, for fixed $`\delta\gt 0`$. Under the logarithmic
 scale assumption, these windows are nonempty eventually whenever
-$`2\delta<1-\rho`$.
+$`2\delta\lt 1-\rho`$.
 
 Under the same logarithmic-scale assumption, the general mass-limit theorem
 gives, for $`\rho\le t\le1`$,
@@ -201,7 +201,7 @@ sources are [Radial.lean](SupercriticalLogRank/Radial.lean),
 
 ### Conditional score laws and transfer to ranks
 
-Under the stronger theorem's assumptions, for each $`\rho<t<1`$,
+Under the stronger theorem's assumptions, for each $`\rho\lt t\lt 1`$,
 
 ```math
 \Pr(X_n\le n^t\mid S_n)\longrightarrow\frac{t-\rho}{1-\rho},

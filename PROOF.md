@@ -2,11 +2,11 @@
 
 ## Statement
 
-For each $`n\ge 2`$, take a balanced market with $`n`$ firms and $`n`$ workers. Let all firm utilities $`U_{ij}`$ and worker utilities $`V_{ij}`$ be independent and distributed as $`\mathrm{Exp}(1)`$, where $`V_{ij}`$ is worker $`j`$'s utility for firm $`i`$. The diagonal matching pairs firm $`i`$ with worker $`i`$. Write $`S_n`$ for the event that no $`i\ne j`$ satisfies both $`U_{ij}>U_{ii}+\varepsilon_n`$ and $`V_{ij}>V_{jj}+\varepsilon_n`$. Define the firms' total partner rank by
+For each $`n\ge 2`$, take a balanced market with $`n`$ firms and $`n`$ workers. Let all firm utilities $`U_{ij}`$ and worker utilities $`V_{ij}`$ be independent and distributed as $`\mathrm{Exp}(1)`$, where $`V_{ij}`$ is worker $`j`$'s utility for firm $`i`$. The diagonal matching pairs firm $`i`$ with worker $`i`$. Write $`S_n`$ for the event that no $`i\ne j`$ satisfies both $`U_{ij}\gt U_{ii}+\varepsilon_n`$ and $`V_{ij}\gt V_{jj}+\varepsilon_n`$. Define the firms' total partner rank by
 ```math
 R_n=\sum_{i=1}^n\sum_{j=1}^n \mathbf 1\{U_{ij}\ge U_{ii}\}.
 ```
-Suppose $`\varepsilon_n\ge 0`$, $`n\varepsilon_n/\log n\to+\infty`$, and $`2\varepsilon_n/\log n\to\rho`$ for $`0\le\rho<1`$. Then for every $`\rho<t<1`$,
+Suppose $`\varepsilon_n\ge 0`$, $`n\varepsilon_n/\log n\to+\infty`$, and $`2\varepsilon_n/\log n\to\rho`$ for $`0\le\rho\lt 1`$. Then for every $`\rho\lt t\lt 1`$,
 ```math
 \Pr(R_n\le n^{1+t}\mid S_n)\longrightarrow\frac{t-\rho}{1-\rho}.
 ```
@@ -18,13 +18,13 @@ Codex helped formalize these results in Lean.
 
 ## 1. The exact integral
 
-Set $`a=e^{-\varepsilon_n}`$ and $`q=a^2`$, so $`0<q\le 1`$. Both parameters may vary with $`n`$. Write $`A_{ij}=e^{-U_{ij}}`$ and $`B_{ij}=e^{-V_{ij}}`$. These are independent uniforms on $`[0,1]`$, since $`\Pr(e^{-U}\le z)=\Pr(U\ge-\log z)=z`$ for $`0<z<1`$ and $`U\sim\mathrm{Exp}(1)`$. Set $`x_i=A_{ii}`$, $`y_j=B_{jj}`$, $`X=\sum_i x_i`$, and $`Y=\sum_j y_j`$.
+Set $`a=e^{-\varepsilon_n}`$ and $`q=a^2`$, so $`0\lt q\le 1`$. Both parameters may vary with $`n`$. Write $`A_{ij}=e^{-U_{ij}}`$ and $`B_{ij}=e^{-V_{ij}}`$. These are independent uniforms on $`[0,1]`$, since $`\Pr(e^{-U}\le z)=\Pr(U\ge-\log z)=z`$ for $`0\lt z\lt 1`$ and $`U\sim\mathrm{Exp}(1)`$. Set $`x_i=A_{ii}`$, $`y_j=B_{jj}`$, $`X=\sum_i x_i`$, and $`Y=\sum_j y_j`$.
 
 Conditional on $`x,y`$, a pair $`i\ne j`$ blocks the diagonal matching precisely when $`(A_{ij},B_{ij})`$ lies in the rectangle $`[0,ax_i)\times[0,ay_j)`$, up to null endpoints. The rectangles refer to independent pairs of coordinates. Thus the exact probability of stability given $`x,y`$ is
 ```math
 K_q(x,y)=\prod_{i\ne j}(1-qx_i y_j).
 ```
-For any Borel set of diagonal scores, its joint probability with $`S_n`$ is the integral of $`K_q`$ over that set in the unit cube. In particular, $`Z_n=\Pr(S_n)>0`$ because the integrand is positive throughout the interior of the cube. The conditional law of $`x,y`$ has density $`K_q/Z_n`$.
+For any Borel set of diagonal scores, its joint probability with $`S_n`$ is the integral of $`K_q`$ over that set in the unit cube. In particular, $`Z_n=\Pr(S_n)\gt 0`$ because the integrand is positive throughout the interior of the cube. The conditional law of $`x,y`$ has density $`K_q/Z_n`$.
 
 Integrating out $`y`$ factorizes because each $`y_j`$ appears in its own group of factors:
 ```math
@@ -34,11 +34,11 @@ Integrating out $`y`$ factorizes because each $`y_j`$ appears in its own group o
 
 ## 2. The density of the score sum on the logarithmic scale
 
-Put $`s=\sum_i x_i`$ and $`u_i=x_i/s`$ for $`s>0`$. Write $`\Delta_{n-1}`$ for the simplex $`\{u_i\ge0,\ \sum_i u_i=1\}`$, using $`u_1,\ldots,u_{n-1}`$ as its coordinates. The Jacobian of $`x=su`$ in these coordinates is $`s^{n-1}`$. Indeed, the first $`n-1`$ columns of the derivative matrix are $`s(e_i-e_n)`$, where $`e_i`$ is the $`i`$th coordinate vector, and the last is $`u`$. After factoring out $`s^{n-1}`$, adding the first $`n-1`$ rows to the last gives determinant $`1`$.
+Put $`s=\sum_i x_i`$ and $`u_i=x_i/s`$ for $`s\gt 0`$. Write $`\Delta_{n-1}`$ for the simplex $`\{u_i\ge0,\ \sum_i u_i=1\}`$, using $`u_1,\ldots,u_{n-1}`$ as its coordinates. The Jacobian of $`x=su`$ in these coordinates is $`s^{n-1}`$. Indeed, the first $`n-1`$ columns of the derivative matrix are $`s(e_i-e_n)`$, where $`e_i`$ is the $`i`$th coordinate vector, and the last is $`u`$. After factoring out $`s^{n-1}`$, adding the first $`n-1`$ rows to the last gives determinant $`1`$.
 
 Use $`\mathbb E_\Delta`$ for expectation under the uniform law on $`\Delta_{n-1}`$, with coordinate density $`(n-1)!`$. To see the density and a useful representation, apply the same change of variables to independent rate-one exponentials $`E_1,\ldots,E_n`$. Their joint density becomes $`e^{-s}s^{n-1}`$. Integrating in $`s`$ gives $`(n-1)!`$ by integration by parts, so $`u=(E_i/\sum_k E_k)_i`$ has this uniform law.
 
-For $`s>0`$ and $`su_i\le1`$ for all $`i`$, define
+For $`s\gt 0`$ and $`su_i\le1`$ for all $`i`$, define
 ```math
 J_j(s,u)=\int_0^{qs}\prod_{i\ne j}(1-u_i z)\,dz.
 ```
@@ -56,7 +56,7 @@ H_n(s)=\mathbb E_\Delta W_n(s,u),
 The Jacobian and the factor $`(qs)^{-n}`$ give the exact density formula
 ```math
 \Pr(X\in ds,\ S_n)=D_n H_n(s)\,\frac{ds}{s},
-\qquad 0<s\le n. \tag{1}
+\qquad 0\lt s\le n. \tag{1}
 ```
 
 ### A uniform bound
@@ -70,7 +70,7 @@ If $`s\ge 2`$, then every $`u_j\le1/s\le1/2`$. We obtain $`J_j\le(1-u_j)^{-1}`$ 
 \prod_j(1-u_j)^{-1}
 =\exp\!\bigg(\sum_j-\log(1-u_j)\bigg)\le e^2,
 ```
-using $`-\log(1-u_j)=\int_0^{u_j}(1-v)^{-1}\,dv\le2u_j`$. If $`0<s<2`$, the displayed integral for $`J_j`$ is at most $`e^{qsu_j}\int_0^{qs}e^{-z}\,dz\le e^{qsu_j}`$. Multiplying gives $`\prod_j J_j\le e^{qs}\le e^2`$. With the zero value on the inadmissible part, this proves
+using $`-\log(1-u_j)=\int_0^{u_j}(1-v)^{-1}\,dv\le2u_j`$. If $`0\lt s\lt 2`$, the displayed integral for $`J_j`$ is at most $`e^{qsu_j}\int_0^{qs}e^{-z}\,dz\le e^{qsu_j}`$. Multiplying gives $`\prod_j J_j\le e^{qs}\le e^2`$. With the zero value on the inadmissible part, this proves
 ```math
 0\le W_n(s,u)\le \min\{e^2,(qs)^n\}. \tag{2}
 ```
@@ -78,7 +78,7 @@ In particular, the region $`s\le 1/q`$ contributes at most $`D_n/n`$ in (1), by 
 
 ### The density on an interior window
 
-Write $`\rho_n=-\log q/\log n`$, so $`\rho_n\to\rho`$. Fix $`\delta>0`$ with $`2\delta<1-\rho`$. For all sufficiently large $`n`$, the interval
+Write $`\rho_n=-\log q/\log n`$, so $`\rho_n\to\rho`$. Fix $`\delta\gt 0`$ with $`2\delta\lt 1-\rho`$. For all sufficiently large $`n`$, the interval
 ```math
 I_n=\big[n^\delta/q,\ n^{1-\delta}\big]
 ```
@@ -92,7 +92,7 @@ Under the uniform simplex law, let $`M=\max_i u_i`$ and $`Q=\sum_i u_i^2`$. The 
 nQ=\frac{n^{-1}\sum_i E_i^2}{(n^{-1}\sum_i E_i)^2},
 \qquad \mathbb E E_i=1,\quad \mathbb E E_i^2=2.
 ```
-Both sample averages have finite variance. Also $`\Pr(\max_i E_i>2\log n)\le n e^{-2\log n}=1/n`$. On the event $`\sum_i E_i\ge n/2`$ and $`\max_i E_i\le2\log n`$, we have $`M\le4\log n/n`$. Consequently the simplex event $`G_n=\{M\le4\log n/n\}`$ has probability tending to one.
+Both sample averages have finite variance. Also $`\Pr(\max_i E_i\gt 2\log n)\le n e^{-2\log n}=1/n`$. On the event $`\sum_i E_i\ge n/2`$ and $`\max_i E_i\le2\log n`$, we have $`M\le4\log n/n`$. Consequently the simplex event $`G_n=\{M\le4\log n/n\}`$ has probability tending to one.
 
 For $`u\in G_n`$ and $`s\in I_n`$, all cube constraints hold for large $`n`$ because $`sM\le4n^{-\delta}\log n\to0`$. Also $`qs\ge n^\delta`$. Set $`L=8\log n`$, which is below $`qs`$ for large $`n`$. For $`0\le z\le L`$ and all $`j`$, Taylor's formula on $`0\le u_i z\le 1/2`$ gives
 ```math
@@ -115,7 +115,7 @@ In particular $`J_j-1=O(\log n/n)`$. Expanding the logarithm of each $`J_j`$ and
 \log W_n(s,u)=\sum_j(u_j-Q)+O\!\left(\frac{(\log n)^6}{n}\right)
 =1-nQ+o(1)
 ```
-uniformly on $`s\in I_n`$, $`u\in G_n`$. Since $`nQ\to2`$ in probability and $`\Pr_\Delta(G_n)\to1`$, for each fixed $`\eta>0`$ there is a simplex event of probability tending to one on which $`|W_n(s,u)-e^{-1}|\le\eta`$ for every $`s\in I_n`$. By (2), $`|H_n(s)-e^{-1}|`$ is at most $`\eta`$ plus $`(e^2+e^{-1})`$ times the probability of the complementary event, uniformly in $`s`$. Letting $`\eta`$ decrease to zero proves (3).
+uniformly on $`s\in I_n`$, $`u\in G_n`$. Since $`nQ\to2`$ in probability and $`\Pr_\Delta(G_n)\to1`$, for each fixed $`\eta\gt 0`$ there is a simplex event of probability tending to one on which $`|W_n(s,u)-e^{-1}|\le\eta`$ for every $`s\in I_n`$. By (2), $`|H_n(s)-e^{-1}|`$ is at most $`\eta`$ plus $`(e^2+e^{-1})`$ times the probability of the complementary event, uniformly in $`s`$. Letting $`\eta`$ decrease to zero proves (3).
 
 ### Normalization and the score law
 
@@ -130,7 +130,7 @@ The $`o(1)`$ terms tend to zero for fixed $`\delta`$. Taking limits and then let
 ```math
 \frac{Z_n}{D_n\log n}\longrightarrow e^{-1}(1-\rho). \tag{4}
 ```
-For fixed $`\rho<t<1`$, choose $`\delta`$ also less than $`\min(t-\rho,1-t)`$, so $`n^t\in I_n`$ eventually. The logarithmic length from $`n^\delta/q`$ to $`n^t`$ is $`(t-\rho_n-\delta)\log n`$. The contribution below $`n^\delta/q`$ is at most $`D_n(1/n+e^2\delta\log n)`$. Thus the same squeeze gives
+For fixed $`\rho\lt t\lt 1`$, choose $`\delta`$ also less than $`\min(t-\rho,1-t)`$, so $`n^t\in I_n`$ eventually. The logarithmic length from $`n^\delta/q`$ to $`n^t`$ is $`(t-\rho_n-\delta)\log n`$. The contribution below $`n^\delta/q`$ is at most $`D_n(1/n+e^2\delta\log n)`$. Thus the same squeeze gives
 ```math
 \frac{\Pr(X\le n^t,\ S_n)}{D_n\log n}\longrightarrow e^{-1}(t-\rho).
 ```
@@ -143,7 +143,7 @@ For $`t\le\rho`$, bounding the conditional probability by its value at any $`t'\
 
 ## 3. Transfer from scores to ranks
 
-From (5), $`X\to\infty`$ and $`Y/n\to0`$ in conditional probability given $`S_n`$. In detail, for each fixed $`C>0`$ and each $`\rho<t<1`$, $`C<n^t`$ for large $`n`$, so $`\limsup\Pr(X\le C\mid S_n)\le(t-\rho)/(1-\rho)`$, which tends to zero as $`t\downarrow\rho`$. For each $`\eta>0`$, we have $`n^t<\eta n`$ for large $`n`$, so $`\limsup\Pr(Y>\eta n\mid S_n)\le(1-t)/(1-\rho)`$, which tends to zero as $`t\uparrow1`$.
+From (5), $`X\to\infty`$ and $`Y/n\to0`$ in conditional probability given $`S_n`$. In detail, for each fixed $`C\gt 0`$ and each $`\rho\lt t\lt 1`$, $`C\lt n^t`$ for large $`n`$, so $`\limsup\Pr(X\le C\mid S_n)\le(t-\rho)/(1-\rho)`$, which tends to zero as $`t\downarrow\rho`$. For each $`\eta\gt 0`$, we have $`n^t\lt \eta n`$ for large $`n`$, so $`\limsup\Pr(Y\gt \eta n\mid S_n)\le(1-t)/(1-\rho)`$, which tends to zero as $`t\uparrow1`$.
 
 Conditional on $`x,y,S_n`$, the off-diagonal pairs $`(A_{ij},B_{ij})`$ are independent and each is uniform on the complement of its forbidden rectangle. This follows by conditioning the product law on the intersection of the separate coordinate events. Since $`a\le1`$, the forbidden rectangle is contained in $`\{A_{ij}\le x_i\}`$. The conditional probability that $`j`$ is counted in firm $`i`$'s rank, for $`i\ne j`$, is consequently
 ```math
@@ -163,11 +163,11 @@ In particular,
 \left|\frac{\mathbb E(R_n\mid x,y,S_n)}{nX}-1\right|
 \le\frac1X+\frac1n+\frac{qY}{n}.
 ```
-The right side tends to zero in conditional probability since $`q\le1`$. On $`X\ge1`$, conditional Chebyshev bounds the probability that $`R_n/(nX)`$ differs from its conditional mean by more than any fixed $`\eta>0`$ by $`1/(\eta^2 nX)\le1/(\eta^2 n)`$. Averaging over $`x,y`$ and using $`\Pr(X<1\mid S_n)\to0`$ proves $`R_n/(nX)\to1`$ in conditional probability.
+The right side tends to zero in conditional probability since $`q\le1`$. On $`X\ge1`$, conditional Chebyshev bounds the probability that $`R_n/(nX)`$ differs from its conditional mean by more than any fixed $`\eta\gt 0`$ by $`1/(\eta^2 nX)\le1/(\eta^2 n)`$. Averaging over $`x,y`$ and using $`\Pr(X\lt 1\mid S_n)\to0`$ proves $`R_n/(nX)\to1`$ in conditional probability.
 
 Taking logarithms gives
 ```math
 \frac{\log(R_n/n)}{\log n}-\frac{\log X}{\log n}
 =\frac{\log(R_n/(nX))}{\log n}\longrightarrow0
 ```
-in conditional probability. For $`\rho<t<1`$, choose $`\eta>0`$ with $`t-\eta,t+\eta\in(\rho,1)`$. Outside an event of conditional probability tending to zero, the two logarithmic variables differ by at most $`\eta`$. The conditional probability that the rank variable is at most $`t`$ is therefore squeezed between the score CDF at $`t-\eta`$ minus $`o(1)`$ and that at $`t+\eta`$ plus $`o(1)`$. By (5), sending $`\eta\downarrow0`$ gives the claimed limit. The event for the rank variable is exactly $`R_n\le n^{1+t}`$ because $`\log n>0`$. $`\square`$
+in conditional probability. For $`\rho\lt t\lt 1`$, choose $`\eta\gt 0`$ with $`t-\eta,t+\eta\in(\rho,1)`$. Outside an event of conditional probability tending to zero, the two logarithmic variables differ by at most $`\eta`$. The conditional probability that the rank variable is at most $`t`$ is therefore squeezed between the score CDF at $`t-\eta`$ minus $`o(1)`$ and that at $`t+\eta`$ plus $`o(1)`$. By (5), sending $`\eta\downarrow0`$ gives the claimed limit. The event for the rank variable is exactly $`R_n\le n^{1+t}`$ because $`\log n\gt 0`$. $`\square`$
