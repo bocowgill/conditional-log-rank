@@ -20,6 +20,9 @@ project:
     This fixed-matching conditioning does not determine ranks under a uniform
     stable lottery in an ordinary random market, or dispersion of stable
     outcomes within a typical realized market.
+    An accompanying working paper presenting these results and their economic
+    interpretation is in preparation. A link will be added here when it is
+    publicly available.
   authors: ["Bo Cowgill"]
   license: "Apache-2.0"
   responsible_maintainers: ["Bo Cowgill"]
