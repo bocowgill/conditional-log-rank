@@ -1,0 +1,10 @@
+.lake/
+.unlazy/
+audit/local-*.log
+audit/axioms.json
+audit/build.log
+audit/metadata-validation.json
+audit/mechanical-report*.json
+__pycache__/
+.DS_Store
+GATES.md

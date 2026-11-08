@@ -1,0 +1,23 @@
+{
+  "SupercriticalLogRank/Assembly.lean": "c8804b13cc159df049e157bb3e12026a1be057101dc4f212d20de3ce9c6c4b3d",
+  "SupercriticalLogRank/ColumnFactorization.lean": "334b031551cece6455e3b997edf6881ec2da75232a8454a1105b95304cfdd885",
+  "SupercriticalLogRank/ConditionalIntegral.lean": "d5c0b46dad569340cabdceac361db792c2ee49a54f081ac95943a3d02a2e8cb0",
+  "SupercriticalLogRank/ExactRadial.lean": "b0cea7caac94bbd3fe108b79bbd6a214451cb8cda176d5433cee9e29cfeb75fd",
+  "SupercriticalLogRank/FiberBound.lean": "57f443e7f5d8ad9bf01eea335e49f274a0db7c8c303d4e7990c380d417b13d7b",
+  "SupercriticalLogRank/GlobalBound.lean": "e221a7561fbaece0593e5973da4c96a723927e67245d88ad40bc93060e00fd67",
+  "SupercriticalLogRank/InteriorLimit.lean": "65eeb243fcd025b48f30146328ccaf264687934acb2a580dc475241683ae678f",
+  "SupercriticalLogRank/LogVariables.lean": "9fb4186550e9c156d26d303848c6195268d54b9669577d9bf94d4fa6f81db63c",
+  "SupercriticalLogRank/MarketBasics.lean": "8bae4137c92f4db3948e1a7ca263a680d1bbda092762ba7e79753732c5cd29b6",
+  "SupercriticalLogRank/Model.lean": "0f61586579a59eecb2f4247f333c140fe568ed311a7452d8bc53f9fc1a2be1ab",
+  "SupercriticalLogRank/Radial.lean": "7f4dbd6614772a6542c75d3729221654a92c91ec90c7549c5faa05cfe06fc3fa",
+  "SupercriticalLogRank/RadialLimit.lean": "f8f39a8c4d1a9f815fe7f97c6c41d82ae9ed50142ac713725ae424855df9dd69",
+  "SupercriticalLogRank/RadialMeasurability.lean": "9b6a2bb7296d1e0f1c757b42cd9f86758c0b3940e85f3d912332a2f1e3ff0c7e",
+  "SupercriticalLogRank/RankTransfer.lean": "507534f26543794855203ea1bcacfc2d276985435b65a75e3ce45c46e94a527d",
+  "SupercriticalLogRank/Scales.lean": "73aa6858c32c0b76a215e5dc15507e1b9e0487d492e181595a5571e51e919281",
+  "SupercriticalLogRank/ScoreConsequences.lean": "346dd1c833de0fbdaccc6a94e893948b319a84ed29fb888f7f5abb2a14534c19",
+  "SupercriticalLogRank/ScoreLimit.lean": "3860403f172e0d028b537d688b8e5df142e8dadcbcf675fc011b712524ad5f35",
+  "SupercriticalLogRank/SimplexConcentration.lean": "0da8d3e0d30213c2bbe771422ded9fad59768dcb836529e7d98f58a6028d781e",
+  "SupercriticalLogRank/Taylor.lean": "17ff11ed2572e8fe2b9a801427d8259a9ea65339e0d9da32f57d49e7acfbf09a",
+  "SupercriticalLogRank/Theorem.lean": "8e43d4a9c8fddab9883b86257a458ec561399157a12546fd5ad83f689bb87831",
+  "SupercriticalLogRank.lean": "82101a460d29ddf53e2ac31ca224b971556e69b8336268421ebbab2fe67425d1"
+}

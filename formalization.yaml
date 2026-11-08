@@ -1,0 +1,130 @@
+version: "v0.4"
+
+project:
+  name: "Conditional logarithmic partner ranks in exponential matching markets"
+  description: >-
+    In balanced markets with independent rate-one exponential utilities, condition
+    on stability of a fixed matching when both agents must gain more than a common
+    switching cost. If twice the cost divided by log n tends to rho in [0,1),
+    the conditional probability that average firm rank is at most n^t tends to
+    (t-rho)/(1-rho) for every rho<t<1. The proof includes positive conditioning
+    probability and the supercritical-cost special case. It does not determine
+    ranks under a uniform stable lottery in an ordinary random market.
+  authors: ["Bo Cowgill"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Bo Cowgill"]
+
+classification:
+  arxiv: ["math.PR", "math.CO"]
+  msc2020: ["60C05", "05A16", "91B68"]
+
+sources:
+  - title: "Conditional logarithmic partner ranks in exponential matching markets"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The precise conditional limit is first presented in this standalone proof
+      development, following a research question and a proposed sharpening.
+      This origin declaration is not a claim that literature priority has been certified.
+  - title: "Stable matchings under relaxed random preferences"
+    authors: ["Boris Pittel", "Kirill Rudov"]
+    id: "doi:10.1007/s00182-026-01016-x"
+    type: "paper"
+    location: "https://doi.org/10.1007/s00182-026-01016-x"
+    relationship: "background"
+    note: >-
+      Supplies the exponential-utility switching-cost model, expected-count
+      analysis, and motivation for studying partner ranks. The precise conditional
+      log-rank law is our sharpening, not a theorem or conjecture attributed to the authors.
+    author_endorsement: "not-contacted"
+  - title: "Stable Matchings with Switching Costs"
+    authors: ["Boris Pittel", "Kirill Rudov"]
+    type: "paper"
+    location: "https://krudov.com/papers/JMP_Kirill_Rudov.pdf"
+    relationship: "background"
+    note: >-
+      December 12, 2024 working paper, Appendix C, Lemma 5, gives the joint
+      stability and total-rank probability formula. The present proof derives
+      its conditional integral directly in Lean and assumes no result from that formula.
+    author_endorsement: "not-contacted"
+  - title: "The Average Number of Stable Matchings"
+    authors: ["Boris Pittel"]
+    id: "doi:10.1137/0402048"
+    type: "paper"
+    location: "https://doi.org/10.1137/0402048"
+    relationship: "background"
+    note: "Classical zero-cost expected-count and rank analysis; no unproved premise is imported."
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/pull/7828"
+    relationship: "adapts"
+    note: >-
+      The balanced model and finite conditioning definitions were adapted from
+      this statement-only contribution under Apache-2.0. This repository contains
+      the substantive proof. The original PR and its placeholder proof are unchanged.
+
+status:
+  scope: >-
+    Full Lean proofs of the fixed-matching conditional limit, its supercritical
+    special case, and positivity of the conditioning event. The limit is along
+    n=k+2 and only interior cutoffs rho<t<1 are selected for comparison. The
+    market-first bridge and count-separation theorem are outside this submission.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        Codex agents generated the earlier informal proof and Lean development
+        under the maintainer's direction. Exact earlier model identifiers and
+        effort accounting were not retained.
+    - method: "agent"
+      models: ["GPT-6"]
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        Prepared the Palomar statement surface, ported the proof to Lean/Mathlib
+        4.35, audited statements and transitive axioms, and ran builds and the
+        Palomar mechanical preflight. See audit/STATEMENT_AUDIT.md.
+  spend_usd: "subscription-based; not tracked separately"
+  notes: >-
+    Bo Cowgill directed the research and formalization and maintains the
+    submission. The mathematical and Lean proof text was produced by AI agents.
+    No independent human mathematical review is claimed.
+
+fidelity:
+  divergences: >-
+    The cited literature motivates a broad rank question. Our exact CDF limit
+    concerns a fixed matching conditioned on stability, not the market-first
+    stable lottery. The general theorem removes the additional supercritical
+    lower-bound hypothesis in Formal Conjectures issue 7827. Utilities have rate
+    one, costs are common to both sides, ranks are one-based, and cutoffs are interior.
+
+review:
+  status: "self-assessed"
+  notes: >-
+    The packaging agent checked the formal definitions and hypotheses against
+    the informal claim, scanned proof sources, collected transitive axioms from
+    Lean, and ran the supported-toolchain build. This is agent self-review and
+    machine checking, not independent human peer review. Palomar's own checks
+    are separate and are not represented as completed by this field.
+
+alignment:
+  namespace: "ConditionalLogRank"
+  statements:
+    - lean: "ConditionalLogRank.logRankLaw"
+      module: "Solution"
+      status: "proved"
+      note: "The conditional CDF limit under nonnegative costs and the logarithmic scale limit."
+    - lean: "ConditionalLogRank.supercriticalLogRankLaw"
+      module: "Solution"
+      status: "proved"
+      note: "The same limit with the additional supercritical hypothesis."
+    - lean: "ConditionalLogRank.stability_probability_pos"
+      module: "Solution"
+      status: "proved"
+      note: "Positive conditioning mass for every finite size and nonnegative cost."
+
+acknowledgements: "Lean, Mathlib, and the Formal Conjectures contributors; sources retain their own credit."
