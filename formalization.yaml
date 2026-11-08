@@ -34,7 +34,8 @@ sources:
     relationship: "background"
     note: >-
       Supplies the exponential-utility switching-cost model, expected-count
-      analysis, and motivation for studying partner ranks. The precise conditional
+      analysis, and the Section 3 rank question about a uniform stable lottery in a
+      realized market. Our conditional theorem does not answer that question. The precise conditional
       log-rank law is our sharpening, not a theorem or conjecture attributed to the authors.
     author_endorsement: "not-contacted"
   - title: "Stable Matchings with Switching Costs"
@@ -86,7 +87,7 @@ automation:
       framework: "OpenAI Codex"
       tool_setup: >-
         Prepared the Palomar statement surface, ported the proof to Lean/Mathlib
-        4.35, audited statements and transitive axioms, and ran builds and the
+        4.35, audited statements and transitive axioms, and ran builds and configured the
         Palomar mechanical preflight. See audit/STATEMENT_AUDIT.md.
   spend_usd: "subscription-based; not tracked separately"
   notes: >-

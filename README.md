@@ -51,7 +51,9 @@ conjectures, or the later stable-count separation theorem.
 ## Source relationship
 
 [Pittel and Rudov (2026)](https://doi.org/10.1007/s00182-026-01016-x) supply the
-exponential-utility switching-cost model and ask broader partner-rank questions.
+exponential-utility switching-cost model. Their Section 3 rank question concerns
+a uniform stable lottery in the realized market. Our theorem concerns a related
+conditional sampling scheme and does not answer their market-first question.
 Appendix C, Lemma 5 of their [December 2024 working paper](https://krudov.com/papers/JMP_Kirill_Rudov.pdf)
 gives a joint stability/rank probability formula. The precise conditional CDF limit
 above is our proposed sharpening and proof; it is not attributed to them. No author

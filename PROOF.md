@@ -12,7 +12,7 @@ $$
 $$
 In fact the proof needs only nonnegativity and $2\varepsilon_n/\log n\to\rho\in[0,1)$.
 
-This is the proposed sharpening stated in [Formal Conjectures #7827](https://github.com/google-deepmind/formal-conjectures/issues/7827) and [PR #7828](https://github.com/google-deepmind/formal-conjectures/pull/7828). The broader question about postcritical rank estimates appears in [Pittel and Rudov, §1](https://link.springer.com/content/pdf/10.1007/s00182-026-01016-x.pdf#page=6). Their [working paper, Appendix C, Lemma 5](https://krudov.com/papers/JMP_Kirill_Rudov.pdf#page=43) gives a joint probability formula for diagonal stability and total firm rank. We derive the conditional law used here directly.
+This is the proposed sharpening stated in [Formal Conjectures #7827](https://github.com/google-deepmind/formal-conjectures/issues/7827) and [PR #7828](https://github.com/google-deepmind/formal-conjectures/pull/7828). The broader question about postcritical rank estimates appears in [Pittel and Rudov, §3](https://doi.org/10.1007/s00182-026-01016-x). Their [working paper, Appendix C, Lemma 5](https://krudov.com/papers/JMP_Kirill_Rudov.pdf#page=43) gives a joint probability formula for diagonal stability and total firm rank. We derive the conditional law used here directly. Their published rank question concerns a uniform choice from the stable matchings of a realized market. Our theorem concerns the related fixed-matching conditional law and does not answer that market-first question.
 
 ## 1. The exact integral
 

@@ -45,7 +45,9 @@ the conditional probability uses a nonzero denominator.
 ## Source fidelity
 
 Pittel and Rudov supply the utility model and broader open rank questions.
-Their published paper and December 2024 working paper are background sources,
+The published Section 3 question concerns a uniform stable lottery in a realized
+market; this theorem does not answer it. Their published paper and December 2024
+working paper are background sources,
 not sources to which the exact conditional CDF limit is attributed. The precise
 claim was proposed in issue 7827 and is proved by this standalone development.
 Literature novelty and priority remain unverified. Source-author endorsement
