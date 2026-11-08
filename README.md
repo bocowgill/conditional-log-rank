@@ -14,56 +14,56 @@ package.
 
 ## Model and ranks
 
-For each integer $n\ge2$, there are $n$ firms and $n$ workers. All $2n^2$ utilities
-are independent rate-one exponential random variables. Write $U_{ij}$ for firm
-$i$'s utility from worker $j$, and $V_{ij}$ for worker $j$'s utility from firm $i$.
+For each integer $`n\ge2`$, there are $`n`$ firms and $`n`$ workers. All $`2n^2`$ utilities
+are independent rate-one exponential random variables. Write $`U_{ij}`$ for firm
+$`i`$'s utility from worker $`j`$, and $`V_{ij}`$ for worker $`j`$'s utility from firm $`i`$.
 Higher utility is better.
 
-Fix the diagonal matching: firm $i$ is assigned worker $i$. At a common switching
-cost $\varepsilon_n\ge0$, a pair would leave its assigned partners only if **both**
-agents gain strictly more than $\varepsilon_n$. Thus the stability event $S_n$ is
-that no $i\ne j$ satisfies both inequalities
+Fix the diagonal matching: firm $`i`$ is assigned worker $`i`$. At a common switching
+cost $`\varepsilon_n\ge0`$, a pair would leave its assigned partners only if **both**
+agents gain strictly more than $`\varepsilon_n`$. Thus the stability event $`S_n`$ is
+that no $`i\ne j`$ satisfies both inequalities
 
-$$
+```math
 U_{ij}>U_{ii}+\varepsilon_n,\qquad
 V_{ij}>V_{jj}+\varepsilon_n.
-$$
+```
 
 A firm's partner rank is one plus the number of workers it prefers to its assigned
 worker; rank 1 is best. Define the total firm partner rank by
 
-$$
+```math
 R_n=\sum_{i,j=1}^n\mathbf{1}_{U_{ij}\ge U_{ii}}.
-$$
+```
 
-Here $\mathbf{1}$ denotes an indicator. The assigned worker contributes one, and
-ties have probability zero. Consequently $R_n/n$ is the firms' average partner
-rank, between 1 and $n$.
+Here $`\mathbf{1}`$ denotes an indicator. The assigned worker contributes one, and
+ties have probability zero. Consequently $`R_n/n`$ is the firms' average partner
+rank, between 1 and $`n`$.
 
 ## Original conjecture, proved here
 
 The precise conjecture in [#7827](https://github.com/google-deepmind/formal-conjectures/issues/7827)
-is the following. For every nonnegative cost sequence and every $\rho\in[0,1)$,
+is the following. For every nonnegative cost sequence and every $`\rho\in[0,1)`$,
 assume
 
-$$
+```math
 \frac{n\varepsilon_n}{\log n}\longrightarrow+\infty,
 \qquad
 \frac{2\varepsilon_n}{\log n}\longrightarrow\rho.
-$$
+```
 
-Then, for each real $t$ with $\rho<t<1$,
+Then, for each real $`t`$ with $`\rho<t<1`$,
 
-$$
+```math
 \Pr\!\left(R_n/n\le n^t\mid S_n\right)
 \longrightarrow\frac{t-\rho}{1-\rho}.
-$$
+```
 
 The first assumption specifies the *supercritical* cost regime:
-$\varepsilon_n$ is asymptotically larger than $(\log n)/n$. The second specifies
+$`\varepsilon_n`$ is asymptotically larger than $`(\log n)/n`$. The second specifies
 its logarithmic scale. Equivalently, the logarithmic rank variable
-$L_n=\log(R_n/n)/\log n$ converges in distribution to the uniform law on
-$[\rho,1]$.
+$`L_n=\log(R_n/n)/\log n`$ converges in distribution to the uniform law on
+$`[\rho,1]`$.
 
 This package proves that conjecture. Its conditional sampling scheme differs
 from the market-first question discussed below.
@@ -71,21 +71,21 @@ from the market-first question discussed below.
 ## Stronger theorem
 
 **The supercritical lower bound is unnecessary.** Nonnegativity and
-$2\varepsilon_n/\log n\to\rho\in[0,1)$ alone imply the same conditional rank
+$`2\varepsilon_n/\log n\to\rho\in[0,1)`$ alone imply the same conditional rank
 limit. In particular, the result covers zero costs, fixed nonnegative costs, and
-vanishing costs of any rate, all with $\rho=0$.
+vanishing costs of any rate, all with $`\rho=0`$.
 
-For example, when $\rho=0$, the conditional probability that firms' average
-partner rank is at most $n^{1/4}$ tends to $1/4$. More generally, a cutoff $n^t$
-with $0<t<1$ has limiting probability $t$.
+For example, when $`\rho=0`$, the conditional probability that firms' average
+partner rank is at most $`n^{1/4}`$ tends to $`1/4`$. More generally, a cutoff $`n^t`$
+with $`0<t<1`$ has limiting probability $`t`$.
 
 The main declarations are
 [`ConditionalLogRank.logRankLaw`](Solution.lean) and
 [`ConditionalLogRank.supercriticalLogRankLaw`](Solution.lean). The latter retains
 both assumptions of the original conjecture. Lean indexes market sizes by
-$n=k+2$, so it covers every $n\ge2$ without the exceptional values of $\log n$ at
+$`n=k+2`$, so it covers every $`n\ge2`$ without the exceptional values of $`\log n`$ at
 sizes zero and one. The statements quantify over every interior cutoff
-$\rho<t<1$. No monotonicity assumption or rate of convergence is imposed. The
+$`\rho<t<1`$. No monotonicity assumption or rate of convergence is imposed. The
 usual distributional formulation follows from these interior CDF limits; it is
 not a separate exported weak-convergence declaration.
 
@@ -106,14 +106,14 @@ limit for an ordinary random market followed by a uniform stable choice.
 ## Other results in the package
 
 The following are part of the proof library, beyond the statement in #7827.
-Throughout this section, probabilities conditioned on $S_n$ use the same fixed
+Throughout this section, probabilities conditioned on $`S_n`$ use the same fixed
 matching as above. Set
 
-$$
+```math
 x_i=e^{-U_{ii}},\qquad y_j=e^{-V_{jj}},\qquad
 X_n=\sum_i x_i,\qquad Y_n=\sum_j y_j,\qquad
 q_n=e^{-2\varepsilon_n}.
-$$
+```
 
 These transformed utilities are called *scores* in the Lean files. A smaller
 score means a larger utility. They are auxiliary variables, not ordinal ranks or
@@ -121,23 +121,23 @@ utilities averaged across agents.
 
 ### Finite-market identities and positivity
 
-For every finite size $n$, including zero and one, and every nonnegative cost,
-$\Pr(S_n)>0$. Thus conditioning is well-defined. This is
+For every finite size $`n`$, including zero and one, and every nonnegative cost,
+$`\Pr(S_n)>0`$. Thus conditioning is well-defined. This is
 [`ConditionalLogRank.stability_probability_pos`](Solution.lean); the library also
 proves measurability of stability and rank events and that the conditional measure
 is a probability measure. See [MarketBasics.lean](SupercriticalLogRank/MarketBasics.lean).
 
-The exponential-to-score transform gives independent uniforms on $[0,1]$ before
-conditioning. For a fixed cost, write $q=e^{-2\varepsilon}$. Given diagonal
-scores $x,y$, the probability that the diagonal matching is stable is
+The exponential-to-score transform gives independent uniforms on $`[0,1]`$ before
+conditioning. For a fixed cost, write $`q=e^{-2\varepsilon}`$. Given diagonal
+scores $`x,y`$, the probability that the diagonal matching is stable is
 
-$$
+```math
 K_q(x,y)=\prod_{i\ne j}(1-qx_i y_j).
-$$
+```
 
 Consequently, the joint probability of stability and any measurable event in the
-diagonal scores is the integral of $K_q$ over that event in the unit cube. The
-conditional diagonal-score density is $K_q/\Pr(S_n)$. Integrating out workers'
+diagonal scores is the integral of $`K_q`$ over that event in the unit cube. The
+conditional diagonal-score density is $`K_q/\Pr(S_n)`$. Integrating out workers'
 scores factorizes into one-dimensional column integrals. Firm and worker score
 sums have exactly the same conditional distribution at every finite size. See
 [ConditionalIntegral.lean](SupercriticalLogRank/ConditionalIntegral.lean) and
@@ -145,51 +145,51 @@ sums have exactly the same conditional distribution at every finite size. See
 
 ### Exact radial identity and normalization
 
-For $n\ge1$, let $u$ be uniform on the simplex $u_i\ge0$, $\sum_i u_i=1$. For
-$s>0$, define
+For $`n\ge1`$, let $`u`$ be uniform on the simplex $`u_i\ge0`$, $`\sum_i u_i=1`$. For
+$`s>0`$, define
 
-$$
+```math
 J_j(s,u)=\int_0^{qs}\prod_{i\ne j}(1-u_i z)\,dz,\qquad
 W_n(s,u)=\mathbf{1}_{\forall i,\,su_i\le1}\prod_j J_j(s,u),\qquad
 H_{n,q}(s)=\mathbb E_u[W_n(s,u)].
-$$
+```
 
 The radial identity, stated in Lean as an equality of cutoff integrals, is
 
-$$
+```math
 \Pr(X_n\le c,\ S_n)
 =\frac{q^{-n}}{(n-1)!}\int_0^c H_{n,q}(s)\,\frac{ds}{s}
 \qquad(c\ge0).
-$$
+```
 
 The package proves the simplex change of variables and its normalization, the
 uniform bound
 
-$$
+```math
 0\le H_{n,q}(s)\le\min\!\left(e^2,(qs)^n\right)
 \qquad(0<q\le1,\ s>0),
-$$
+```
 
-and convergence $H_{n,q_n}(s)\to e^{-1}$ uniformly on every interior window
-$n^\delta/q_n\le s\le n^{1-\delta}$, for fixed $\delta>0$. Under the logarithmic
+and convergence $`H_{n,q_n}(s)\to e^{-1}`$ uniformly on every interior window
+$`n^\delta/q_n\le s\le n^{1-\delta}`$, for fixed $`\delta>0`$. Under the logarithmic
 scale assumption, these windows are nonempty eventually whenever
-$2\delta<1-\rho$.
+$`2\delta<1-\rho`$.
 
 Under the same logarithmic-scale assumption, the general mass-limit theorem
-gives, for $\rho\le t\le1$,
+gives, for $`\rho\le t\le1`$,
 
-$$
+```math
 \frac1{\log n}\int_0^{n^t} H_{n,q_n}(s)\,\frac{ds}{s}
 \longrightarrow e^{-1}(t-\rho).
-$$
+```
 
 In particular, combining this with the exact radial identity gives the stability
 normalization
 
-$$
+```math
 \frac{\Pr(S_n)}{\bigl(q_n^{-n}/(n-1)!\bigr)\log n}
 \longrightarrow e^{-1}(1-\rho).
-$$
+```
 
 The last formula is a consequence of the proved identity and general mass-limit
 lemma; it is not exported as a separate market-probability theorem. The relevant
@@ -201,37 +201,37 @@ sources are [Radial.lean](SupercriticalLogRank/Radial.lean),
 
 ### Conditional score laws and transfer to ranks
 
-Under the stronger theorem's assumptions, for each $\rho<t<1$,
+Under the stronger theorem's assumptions, for each $`\rho<t<1`$,
 
-$$
+```math
 \Pr(X_n\le n^t\mid S_n)\longrightarrow\frac{t-\rho}{1-\rho},
 \qquad
 \Pr(Y_n\le n^t\mid S_n)\longrightarrow\frac{t-\rho}{1-\rho}.
-$$
+```
 
 These are the two marginal score laws in
 [ScoreLimit.lean](SupercriticalLogRank/ScoreLimit.lean). They do not assert a joint
 limit or independence. General consequences in
 [ScoreConsequences.lean](SupercriticalLogRank/ScoreConsequences.lean) imply that
-$X_n,Y_n\to\infty$ and $X_n/n,Y_n/n\to0$ in conditional probability.
+$`X_n,Y_n\to\infty`$ and $`X_n/n,Y_n/n\to0`$ in conditional probability.
 
 Given the diagonal scores and stability, off-diagonal pairs remain independent.
-For $i\ne j$, the conditional probability that worker $j$ contributes to firm
-$i$'s rank is, almost surely,
+For $`i\ne j`$, the conditional probability that worker $`j`$ contributes to firm
+$`i`$'s rank is, almost surely,
 
-$$
+```math
 p_{ij}=\frac{x_i-qx_i y_j}{1-qx_i y_j},
 \qquad x_i(1-qy_j)\le p_{ij}\le x_i.
-$$
+```
 
 The package proves this formula, variance and Chebyshev bounds for the resulting
 rank counts, and a bound that transfers estimates at fixed diagonal scores to
 the conditioned market. Combining them with the score tails proves
 
-$$
+```math
 \frac{R_n}{nX_n}\longrightarrow1
 \quad\text{in probability conditional on }S_n.
-$$
+```
 
 Here the ratio statement specializes a general concentration theorem whose
 hypotheses are the two score-tail limits. The package also proves general lemmas
@@ -250,7 +250,7 @@ The remaining modules supply the estimates used above:
 | Modules | Contents |
 | --- | --- |
 | [Model](SupercriticalLogRank/Model.lean) | Market, ranks, conditioning, score kernel, simplex law, and radial-density definitions. |
-| [SimplexConcentration](SupercriticalLogRank/SimplexConcentration.lean) | Exponential moments $\mathbb E[E^k]=k!$, exponential maximum bounds, the normalized-exponential representation of the simplex law, $n\sum_i u_i^2\to2$ in probability, and a bound $\max_i u_i\le4\log n/n$ with probability tending to one. |
+| [SimplexConcentration](SupercriticalLogRank/SimplexConcentration.lean) | Exponential moments $`\mathbb E[E^k]=k!`$, exponential maximum bounds, the normalized-exponential representation of the simplex law, $`n\sum_i u_i^2\to2`$ in probability, and a bound $`\max_i u_i\le4\log n/n`$ with probability tending to one. |
 | [Taylor](SupercriticalLogRank/Taylor.lean) | Explicit logarithm and exponential remainder bounds, column-integral approximations, and product estimates for the radial weight. |
 | [Scales](SupercriticalLogRank/Scales.lean) | Vanishing error estimates and the growth comparisons needed on the interior windows. |
 | [RadialMeasurability](SupercriticalLogRank/RadialMeasurability.lean) | Measurability of column integrals, radial weights, and radial densities. |
